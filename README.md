@@ -2,11 +2,16 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Lang](https://img.shields.io/badge/Lang-Français-005EB8.svg)](#) [![Topic](https://img.shields.io/badge/Topic-Software%20Craftsmanship-brightgreen.svg)](#) [![Made with Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](https://www.markdownguide.org/)
 
-Ce guide propose un parcours progressif pour passer du métier de développeur à celui de *software craftsman* (artisan du logiciel). L'idée du Software Craftsmanship, formalisée par le [Manifesto for Software Craftsmanship](https://manifesto.softwarecraftsmanship.org/) (2009), n'est pas un nouveau processus à appliquer mais une posture : tendre vers la maîtrise, livrer du logiciel qu'on est fier de signer, et transmettre.
+Le *Software Craftsmanship* (en français : artisanat du logiciel) désigne une posture professionnelle plutôt qu'une méthode.
 
-Le parcours est découpé en plusieurs étapes. Chaque étape se concentre sur une dimension précise. Elles peuvent être suivies en ordre, ou piochées selon le contexte. Comptez plusieurs mois par étape pour lire, pratiquer, intégrer.
+> **Que veut dire « Software Craftsmanship » ?**
+> *Software* signifie « logiciel ». *Craftsmanship* vient de *craft*, le métier manuel, l'artisanat. Un *craftsman* est un artisan : la personne qui connaît son métier au point de signer son travail sans rougir. Comparaison du quotidien : un bon menuisier ne se contente pas qu'une étagère tienne au mur ; il soigne aussi les coupes invisibles à l'arrière, parce que c'est ainsi qu'on reconnaît le travail bien fait. L'artisan du logiciel applique la même exigence au code que personne ne verra directement.
 
-Ce document est un **guide de cours**, pas un cahier d'exercices : il vous indique quoi lire, quelles pratiques adopter, quels mots employer, et comment juger de votre progression. Les exercices, vous les rencontrerez en équipe, en *coding dojo* ou en mob. Ici, on pose le décor.
+Cette posture a été formalisée par le [Manifesto for Software Craftsmanship](https://manifesto.softwarecraftsmanship.org/) (2009). Elle tient en trois engagements : tendre vers la maîtrise, livrer du logiciel qu'on est fier de signer, transmettre son savoir aux autres.
+
+Le parcours se découpe en étapes, chacune centrée sur une dimension précise. Elles se suivent dans l'ordre ou se piochent selon le contexte. Comptez plusieurs mois par étape pour lire, pratiquer, intégrer, car une compétence technique ne s'acquiert pas par la seule lecture : elle se grave par la répétition.
+
+Les exercices se vivent en équipe, en *coding dojo* (séance d'entraînement collective, définie plus bas) ou en mob (programmation en groupe). Le texte qui suit pose le décor et donne le vocabulaire.
 
 ## Table des matières
 
@@ -40,7 +45,7 @@ Ce document est un **guide de cours**, pas un cahier d'exercices : il vous indiq
 
 ## Glossaire de référence
 
-Le craft a son vocabulaire. Avant de plonger, on l'aligne. Cette section sert de point d'ancrage : revenez-y dès qu'un terme du guide reste flou.
+Le craft a son vocabulaire. Cette section sert de point d'ancrage : on peut y revenir dès qu'un terme rencontré plus loin reste flou. Chaque sigle est développé puis traduit.
 
 - **TDD** (*Test-Driven Development*, développement piloté par les tests) : on écrit d'abord un test qui échoue, puis le code minimal pour le faire passer, puis on refactorise. Cycle red-green-refactor.
 - **BDD** (*Behavior-Driven Development*, développement piloté par le comportement) : variante du TDD où les tests sont exprimés en langage naturel (Given / When / Then) pour rester proches du métier. Outils typiques : Cucumber, SpecFlow, Behat.
@@ -92,15 +97,31 @@ Publié en 2009 par Robert C. Martin et un groupe de praticiens, le [Manifeste p
 >
 > Ainsi, en recherchant les éléments de gauche, nous avons trouvé que ceux de droite sont indispensables.
 
-**À retenir.** Le manifeste agile reste valable ; le craftsmanship en est une extension. Là où l'agile met l'accent sur la livraison de valeur et l'adaptation, le craft insiste sur la **manière** de livrer cette valeur : un code bien conçu, une communauté qui se forme, des partenariats au-delà de la transaction. Le craftsman ne s'oppose pas à l'agiliste, il refuse simplement le compromis « ça marche, tant pis pour le code ».
+> **Que veut dire « agile » et « Manifeste Agile » ?**
+> L'agilité est une famille de méthodes de travail apparue dans les années 1990 et 2000, qui privilégie les petites livraisons fréquentes et l'adaptation au changement plutôt que les gros plans figés d'avance. Le Manifeste Agile (2001) en est le texte fondateur : quatre valeurs courtes signées par dix-sept praticiens. Comparaison du quotidien : préparer un repas en goûtant et corrigeant au fur et à mesure (agile), plutôt que suivre une recette à la lettre sans jamais goûter (méthode rigide).
 
-**Différence clé avec l'Agile Manifesto.** Le Manifeste Agile parle d'efficacité et d'humain dans la livraison. Le Manifeste Craftsmanship parle du **professionnalisme du producteur** : qualité intrinsèque, transmission, durabilité. Les deux sont complémentaires.
+**À retenir.** Le manifeste agile reste valable ; le craftsmanship en est une extension. Là où l'agile met l'accent sur la livraison de valeur et l'adaptation, le craft insiste sur la **manière** de livrer cette valeur : un code bien conçu, une communauté qui se forme, des partenariats au-delà de la transaction. Le craftsman ne s'oppose pas à l'agiliste, il refuse simplement le compromis « ça marche, tant pis pour le code », parce qu'un logiciel mal conçu coûte cher à chaque modification future.
+
+**Différence clé avec l'Agile Manifesto.** Le Manifeste Agile parle d'efficacité et d'humain dans la livraison. Le Manifeste Craftsmanship parle du **professionnalisme du producteur** : qualité intrinsèque, transmission, durabilité. Les deux sont complémentaires, comme le montre leur filiation :
+
+```mermaid
+flowchart TD
+    XP["Extreme Programming (1999)<br/>pratiques techniques"]
+    AGILE["Manifeste Agile (2001)<br/>valeurs et adaptation"]
+    CRAFT["Manifeste Craftsmanship (2009)<br/>professionnalisme et transmission"]
+    XP --> AGILE
+    AGILE --> CRAFT
+    XP -. "rend les pratiques concretes" .-> CRAFT
+```
 
 ## Les racines XP : d'où vient le craft
 
 Le craftsmanship n'est pas tombé du ciel en 2009. Il est l'enfant direct de l'**Extreme Programming** formalisé par Kent Beck en 1999 (*Extreme Programming Explained: Embrace Change*). XP a posé, avant tous les autres, l'idée qu'un faisceau de **pratiques techniques** (TDD, pair, refactoring, intégration continue, design simple, *small releases*, propriété collective du code) tient la qualité d'un logiciel autant que la posture humaine.
 
-Le Manifeste Agile (2001) a abstrait ce faisceau en valeurs et principes plus universels, plus communicables aux managers. La conséquence non voulue : la diffusion de l'agile a pu se faire **sans les pratiques techniques**. Beaucoup d'organisations « agiles » au sens des cérémonies (Scrum, sprints, *daily stand-up*) n'ont jamais adopté TDD, refactoring outillé ni livraison continue. C'est précisément ce vide que le manifeste de 2009 a voulu combler.
+> **Que veulent dire « Scrum », « sprint », « daily stand-up » ?**
+> Ce sont des rituels d'organisation venus de l'agilité. **Scrum** est la méthode agile la plus répandue : elle organise le travail en cycles courts. **Sprint** désigne l'un de ces cycles, en général deux semaines, à l'issue duquel l'équipe livre quelque chose d'utilisable. **Daily stand-up** (réunion debout quotidienne) est une réunion de quelques minutes, faite debout pour qu'elle reste courte, où chacun dit ce qu'il a fait, ce qu'il va faire et ce qui le bloque. Ces rituels organisent **quand** on travaille, pas **comment** on écrit le code.
+
+Le Manifeste Agile (2001) a abstrait ce faisceau en valeurs et principes plus universels, plus communicables aux managers. La conséquence non voulue : la diffusion de l'agile a pu se faire **sans les pratiques techniques**. Beaucoup d'organisations « agiles » au sens des cérémonies (Scrum, sprints, *daily stand-up*) n'ont jamais adopté TDD, refactoring outillé ni livraison continue. C'est précisément ce vide que le manifeste de 2009 a voulu combler, car des rituels sans qualité technique produisent du logiciel livré vite mais difficile à faire évoluer.
 
 **Lectures pour situer XP.**
 
@@ -108,11 +129,20 @@ Le Manifeste Agile (2001) a abstrait ce faisceau en valeurs et principes plus un
 - Ron Jeffries, Ann Anderson, Chet Hendrickson, *Extreme Programming Installed* (2000). Le quotidien d'une équipe XP.
 - Robert C. Martin, *Agile Software Development: Principles, Patterns, and Practices* (2002). La synthèse SOLID à la sortie d'XP.
 
-À retenir : si quelqu'un vous présente le craft comme une mode récente, montrez-lui le sommaire d'*Extreme Programming Explained*. La majorité du contenu de ce guide y est déjà. Le craftsmanship a, en plus, ajouté la **dimension communautaire** (apprentissage entre pairs, transmission, mouvement) qu'XP avait laissée à l'état d'usage local.
+À retenir : si quelqu'un présente le craft comme une mode récente, le sommaire d'*Extreme Programming Explained* suffit à le démentir. La majorité des pratiques décrites ici y figurent déjà. Le craftsmanship a, en plus, ajouté la **dimension communautaire** (apprentissage entre pairs, transmission, mouvement) qu'XP avait laissée à l'état d'usage local.
 
 ## Parcours junior, confirmé, senior
 
 Un parcours réaliste s'étale sur plusieurs années, avec des paliers identifiables. Voici une cartographie indicative ; les durées varient selon le contexte, l'environnement et l'investissement personnel.
+
+```mermaid
+flowchart LR
+    J["Junior<br/>0 a 2 ans<br/>faire marcher, faire lisible"]
+    C["Confirme<br/>2 a 5 ans<br/>concevoir pour le changement"]
+    S["Senior et au-dela<br/>5 ans et plus<br/>faire grandir equipe et systeme"]
+    J --> C --> S
+    S -. "regression temporaire a chaque changement de contexte" .-> J
+```
 
 ### Junior (0 à 2 ans)
 
@@ -120,6 +150,9 @@ Un parcours réaliste s'étale sur plusieurs années, avec des paliers identifia
 
 - Lectures pivots : *The Pragmatic Programmer*, *Clean Code*.
 - Pratiques : nommage soigné, fonctions courtes, tests unitaires sur du code neuf, premières revues de code à recevoir et à donner.
+> **Que veulent dire « IDE » et « Git » ?**
+> Un **IDE** (*Integrated Development Environment*, environnement de développement intégré) est le logiciel dans lequel on écrit le code : il combine un éditeur de texte, des outils pour exécuter et corriger le programme, et de l'assistance automatique (renommage, complétion). Exemples : IntelliJ IDEA, Visual Studio Code, PhpStorm. **Git** est un outil de gestion de versions : il enregistre l'historique de toutes les modifications du code, permet de revenir en arrière et de travailler à plusieurs sans s'écraser mutuellement. Comparaison du quotidien : Git est l'historique de modifications d'un document partagé, mais en beaucoup plus précis et fiable.
+
 - Outils : maîtriser un IDE, Git en ligne de commande, un langage à fond plutôt que cinq survolés.
 - Indicateurs de progression : vos PR passent la revue avec peu de remarques, vous savez expliquer un bug avant de le corriger.
 
@@ -140,13 +173,22 @@ Un parcours réaliste s'étale sur plusieurs années, avec des paliers identifia
 - Pratiques : conception de systèmes, mentorat, animation de communautés, contribution à la stratégie technique, choix de compromis architecturaux assumés.
 - Indicateurs : on vous sollicite pour arbitrer entre options techniques, vos écrits font référence dans l'équipe, des juniors progressent visiblement à votre contact.
 
-Le passage d'un palier à l'autre n'est pas linéaire. On régresse temporairement chaque fois qu'on change de stack, de domaine ou de contexte. C'est normal.
+> **Que veut dire « stack » ?**
+> Une *stack* (pile technologique) est l'ensemble des technologies utilisées pour construire une application : le langage de programmation, le cadre logiciel (*framework*), la base de données, les outils. Comparaison du quotidien : un cuisinier maîtrise des ustensiles et des techniques précis ; changer de cuisine (française vers japonaise) le force à réapprendre des gestes, même s'il reste un bon cuisinier.
+
+Le passage d'un palier à l'autre n'est pas linéaire. On régresse temporairement chaque fois qu'on change de stack, de domaine ou de contexte. C'est normal : les réflexes acquis sont liés à un environnement précis et doivent être reconstruits ailleurs.
 
 ### Honnêteté sur la progression : tout le monde n'est pas staff
+
+> **Que veulent dire « staff », « principal », « distinguished » ?**
+> Ce sont des titres de carrière d'ingénieur au-delà de « senior », pour celles et ceux qui veulent prendre plus de responsabilité technique sans devenir managers (encadrants de personnes). Du plus accessible au plus rare : **staff engineer** (impact sur plusieurs équipes), **principal engineer** (impact à l'échelle de l'entreprise), **distinguished engineer** (figure de référence, très rare). Comparaison du quotidien : ce sont des grades, comme les ceintures en arts martiaux, mais le grade ne garantit pas la maîtrise réelle.
 
 L'industrie parle beaucoup des trajectoires *staff / principal / distinguished*. Elles existent, elles sont légitimes, et elles attirent les projecteurs. Mais elles ne sont **ni le seul horizon, ni le plus enviable**.
 
 Beaucoup d'excellents praticiens **restent toute leur carrière à un niveau « senior »** au sens technique, par choix lucide. Ils approfondissent un domaine (paiement, télémétrie, compilateurs, données géographiques) et deviennent la mémoire et la maîtrise d'une équipe ou d'un produit. Leur impact se mesure à la **profondeur**, pas à la largeur. C'est une voie pleinement craft : Sandi Metz a écrit l'essentiel de son œuvre en restant développeuse senior ; Emily Bache enseigne le TDD sans être *staff* d'aucune mégastructure ; Michael Feathers a façonné notre rapport au legacy sans titre nobiliaire technique.
+
+> **Que veut dire « flow » ?**
+> Le *flow* (état de flux) est l'état de concentration profonde où l'on est absorbé par une tâche, productif et sans distraction. Le psychologue Mihály Csíkszentmihályi l'a décrit. Comparaison du quotidien : le moment où l'on est tellement plongé dans un livre passionnant qu'on oublie l'heure. Les réunions fréquentes cassent cet état, qui demande de longues plages ininterrompues pour s'installer.
 
 L'erreur courante chez les *staff aspirants* : croire que monter d'un titre, c'est gagner en sens. Souvent, c'est gagner en réunions et perdre en *flow*. Le bon repère :
 
@@ -160,21 +202,27 @@ Cette honnêteté est rare dans la littérature carrière. Elle est pourtant au 
 
 **Objectif** : disposer d'un socle solide en pratiques pragmatiques, lisibilité du code et professionnalisme.
 
-### Livres — fondamentaux
+> **Que veut dire « heuristique » ?**
+> Une heuristique est une règle pratique, pas une loi absolue : un raccourci de bon sens qui marche dans la plupart des cas, sans garantie parfaite. Comparaison du quotidien : « si le ciel est gris le matin, prends un parapluie ». Ce n'est pas toujours vrai, mais c'est un bon réflexe. La plupart des conseils de ce texte sont des heuristiques, pas des dogmes.
 
-1. **[The Pragmatic Programmer: From Journeyman to Master](https://www.amazon.fr/Pragmatic-Programmer-Journeyman-Master/dp/020161622X)** — Andrew Hunt, David Thomas
+### Livres : fondamentaux
+
+1. **[The Pragmatic Programmer: From Journeyman to Master](https://www.amazon.fr/Pragmatic-Programmer-Journeyman-Master/dp/020161622X)**, Andrew Hunt, David Thomas
    La référence sur les bonnes pratiques transverses : DRY, orthogonalité, programmation défensive, automatisation. La 20e édition anniversaire (2019) modernise les exemples.
 
-2. **[Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)** — Robert C. Martin
+   > **Que veulent dire « DRY », « orthogonalité », « programmation défensive » ?**
+   > **DRY** (*Don't Repeat Yourself*, ne vous répétez pas) : chaque information ou règle ne doit exister qu'à un seul endroit du code, sinon une modification oblige à corriger plusieurs copies et on en oublie toujours une. **Orthogonalité** : organiser le code en parties indépendantes qui ne se gênent pas, de sorte que modifier l'une ne casse pas les autres. Comparaison du quotidien : les boutons d'une télécommande sont orthogonaux : changer le volume n'éteint pas la télévision. **Programmation défensive** : écrire du code qui se méfie des données reçues (vérifier qu'une valeur n'est pas absente, qu'un nombre n'est pas négatif) pour éviter qu'une erreur lointaine ne fasse tout planter.
+
+2. **[Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)**, Robert C. Martin
    Heuristiques concrètes pour écrire du code lisible : nommage, fonctions courtes, commentaires utiles, gestion des erreurs.
 
-3. **[The Clean Coder: A Code of Conduct for Professional Programmers](https://www.amazon.fr/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073)** — Robert C. Martin
+3. **[The Clean Coder: A Code of Conduct for Professional Programmers](https://www.amazon.fr/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073)**, Robert C. Martin
    La face professionnelle du métier : engagements, estimations, refus quand c'est nécessaire, gestion du temps et de la pression.
 
-4. **[Software Craftsmanship: Professionalism, Pragmatism, Pride](https://www.amazon.fr/Software-Craftsmanship-Professionalism-Pragmatism-Pride/dp/0134052501)** — Sandro Mancuso
+4. **[Software Craftsmanship: Professionalism, Pragmatism, Pride](https://www.amazon.fr/Software-Craftsmanship-Professionalism-Pragmatism-Pride/dp/0134052501)**, Sandro Mancuso
    Sandro Mancuso, fondateur de la London Software Craftsmanship Community, raconte le mouvement de l'intérieur : ce que signifie le craft, comment il se transmet, comment il s'incarne en entreprise.
 
-### Pratique — fondamentaux
+### Pratique : fondamentaux
 
 - **[Exercism](https://exercism.io/)** : exercices avec retour de mentors humains, plus de 60 langages.
 - **[Codewars](https://www.codewars.com/)** : *katas* à classement, utiles pour explorer un nouveau langage rapidement.
@@ -191,24 +239,30 @@ Cette honnêteté est rare dans la littérature carrière. Elle est pourtant au 
 
 **Objectif** : développer guidé par les tests, refactorer en confiance, intervenir sur du code legacy sans le casser.
 
-### Livres — qualité et tests
+### Livres : qualité et tests
 
-1. **[Growing Object-Oriented Software, Guided by Tests](https://www.amazon.fr/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627)** — Steve Freeman, Nat Pryce
+1. **[Growing Object-Oriented Software, Guided by Tests](https://www.amazon.fr/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627)**, Steve Freeman, Nat Pryce
    *La* référence sur le TDD outside-in et la conception orientée objet pilotée par les tests.
 
-2. **[Refactoring: Improving the Design of Existing Code (2nd ed.)](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0134757599)** — Martin Fowler
+   > **Que veulent dire « TDD outside-in » et « orienté objet » ?**
+   > **TDD outside-in** (de l'extérieur vers l'intérieur) : on commence par écrire le test du comportement visible par l'utilisateur, puis on descend progressivement vers les détails internes, en laissant les tests guider la découpe. **Orienté objet** : un style de programmation où l'on regroupe les données et les actions qui les concernent dans des « objets » (par exemple un objet *Commande* qui sait calculer son total). Comparaison du quotidien : plutôt qu'une grosse liste d'instructions, on organise le programme comme une équipe d'employés ayant chacun un rôle clair.
+
+2. **[Refactoring: Improving the Design of Existing Code (2nd ed.)](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0134757599)**, Martin Fowler
    Catalogue de refactorings nommés, avec mécanique pas à pas. Édition 2018 en JavaScript.
 
-3. **[Working Effectively with Legacy Code](https://www.amazon.fr/Working-Effectively-Legacy-Code-Feathers/dp/0131177052)** — Michael Feathers
+3. **[Working Effectively with Legacy Code](https://www.amazon.fr/Working-Effectively-Legacy-Code-Feathers/dp/0131177052)**, Michael Feathers
    Comment introduire des tests sur du code qui n'en a jamais eu, technique des *seams*, refactorings sûrs.
 
-4. **[Test Driven Development: By Example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530)** — Kent Beck
+4. **[Test Driven Development: By Example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530)**, Kent Beck
    Le livre fondateur du TDD, court et démonstratif, par l'inventeur de la pratique.
 
-5. **[xUnit Test Patterns: Refactoring Test Code](https://www.amazon.fr/xUnit-Test-Patterns-Refactoring-Code/dp/0131495054)** — Gerard Meszaros
+5. **[xUnit Test Patterns: Refactoring Test Code](https://www.amazon.fr/xUnit-Test-Patterns-Refactoring-Code/dp/0131495054)**, Gerard Meszaros
    Le catalogue des *test smells* et des patrons de tests propres : *fixtures*, *test doubles*, *fragile tests*.
 
-### Pratique — qualité et tests
+   > **Que veulent dire « fixtures » et « test doubles » ?**
+   > Une **fixture** est le décor d'un test : les données et objets préparés avant de lancer la vérification (par exemple un client fictif avec un panier rempli). Un **test double** (doublure de test) est un faux objet qui remplace une vraie dépendance pendant le test, comme une doublure remplace un acteur pour une cascade. On l'utilise quand la vraie chose est lente, coûteuse ou imprévisible (une vraie base de données, un vrai paiement bancaire). Les mocks, vus plus loin, sont une sorte de doublure.
+
+### Pratique : qualité et tests
 
 - **[Coding Dojo](https://codingdojo.org/)** : résoudre un problème à plusieurs en TDD strict.
 - **Katas classiques** : Bowling Game, Roman Numerals, Gilded Rose, Tennis Refactoring (voir la section dédiée plus bas).
@@ -225,32 +279,49 @@ Cette honnêteté est rare dans la littérature carrière. Elle est pourtant au 
 
 **Objectif** : structurer un système au-delà de la classe ou du module, comprendre les compromis architecturaux et les frontières de domaine.
 
-### Livres — conception et architecture
+### Livres : conception et architecture
 
-1. **[Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.fr/Domain-Driven-Design-Complexity-Software/dp/0321125215)** — Eric Evans (« livre rouge »)
+1. **[Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.fr/Domain-Driven-Design-Complexity-Software/dp/0321125215)**, Eric Evans (« livre rouge »)
    Le fondateur du DDD : langage ubiquitaire, *bounded contexts*, modélisation tactique et stratégique.
 
-2. **[Implementing Domain-Driven Design](https://www.amazon.fr/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577)** — Vaughn Vernon (« livre jaune »)
+   > **Que veut dire « DDD » et « langage ubiquitaire » ?**
+   > **DDD** (*Domain-Driven Design*, conception pilotée par le domaine) est une manière de concevoir un logiciel en partant du métier qu'il sert (le « domaine ») plutôt que de la technique. On modélise le code avec les mêmes mots que les experts métier. Le **langage ubiquitaire** est justement ce vocabulaire commun, partagé par les développeurs et les experts du domaine, utilisé à la fois dans les discussions et dans le code. Comparaison du quotidien : si une banque parle de « découvert autorisé », le code doit contenir un concept nommé `DecouvertAutorise`, pas un vague `limite2`. Ainsi tout le monde se comprend.
+
+2. **[Implementing Domain-Driven Design](https://www.amazon.fr/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577)**, Vaughn Vernon (« livre jaune »)
    Le pendant pratique d'Evans, avec du code et des recettes.
 
-3. **[Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.amazon.fr/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)** — Robert C. Martin
+3. **[Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.amazon.fr/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)**, Robert C. Martin
    Synthèse des principes de découplage : SOLID, frontières, indépendance vis-à-vis du framework et de la base de données.
 
-4. **[Designing Data-Intensive Applications](https://www.amazon.fr/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321)** — Martin Kleppmann
+   > **Que veut dire « SOLID » ?**
+   > SOLID est un moyen mnémotechnique pour cinq principes de conception orientée objet, formulés par Robert C. Martin. Chacun limite les dégâts d'une future modification.
+   > - **S**, *Single Responsibility* (responsabilité unique) : une classe ne fait qu'une seule chose, pour une seule raison de changer.
+   > - **O**, *Open/Closed* (ouvert/fermé) : on peut ajouter un comportement sans modifier le code existant, en ajoutant du neuf à côté.
+   > - **L**, *Liskov Substitution* (substitution de Liskov) : une sous-classe doit pouvoir remplacer sa classe parente sans surprise. Comparaison : un canard en plastique qui « est un canard » mais ne nage pas casse cette règle.
+   > - **I**, *Interface Segregation* (ségrégation des interfaces) : mieux vaut plusieurs petits contrats ciblés qu'un gros contrat fourre-tout qui force à implémenter des choses inutiles.
+   > - **D**, *Dependency Inversion* (inversion des dépendances) : le code métier important ne dépend pas des détails techniques ; ce sont les détails qui s'adaptent à lui. Approfondi plus loin.
+
+4. **[Designing Data-Intensive Applications](https://www.amazon.fr/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321)**, Martin Kleppmann
    Tout ce qu'il faut savoir sur le stockage, la cohérence, la réplication, le streaming et la résilience.
 
-5. **[Building Evolutionary Architectures: Support Constant Change](https://www.amazon.fr/Building-Evolutionary-Architectures-Support-Constant/dp/1491986360)** — Neal Ford, Rebecca Parsons, Patrick Kua
+5. **[Building Evolutionary Architectures: Support Constant Change](https://www.amazon.fr/Building-Evolutionary-Architectures-Support-Constant/dp/1491986360)**, Neal Ford, Rebecca Parsons, Patrick Kua
    Architecture conçue pour évoluer, *fitness functions*, tests d'architecture.
 
-6. **[Team Topologies: Organizing Business and Technology Teams for Fast Flow](https://www.amazon.fr/Team-Topologies-Organizing-Business-Technology/dp/1942788819)** — Matthew Skelton, Manuel Pais
+6. **[Team Topologies: Organizing Business and Technology Teams for Fast Flow](https://www.amazon.fr/Team-Topologies-Organizing-Business-Technology/dp/1942788819)**, Matthew Skelton, Manuel Pais
    La conception des équipes comme conception du système (loi de Conway prise au sérieux).
 
-### Pratique — conception et architecture
+   > **Que veut dire « loi de Conway » ?**
+   > Énoncée par Melvin Conway en 1968 : un système logiciel finit par ressembler à la structure de communication de l'organisation qui le construit. Comparaison du quotidien : si quatre équipes qui se parlent peu écrivent un compilateur, il aura tendance à se découper en quatre morceaux mal raccordés. La conséquence pratique : pour obtenir une certaine architecture, organisez d'abord les équipes en conséquence.
+
+### Pratique : conception et architecture
 
 - **[System Design Primer](https://github.com/donnemartin/system-design-primer)** : exercices de conception de systèmes à grande échelle.
 - **Lire l'architecture** de projets open-source dans son langage de prédilection.
 - **Documenter** les décisions structurantes via des [ADR](https://adr.github.io/) (*Architecture Decision Records*).
 - **Animer un Event Storming** sur un domaine que vous connaissez.
+
+> **Que veut dire « Event Storming » ?**
+> L'*Event Storming* (tempête d'événements) est un atelier collaboratif inventé par Alberto Brandolini : on réunit développeurs et experts métier devant un grand mur, et chacun colle des notes adhésives représentant les événements importants du métier (« commande payée », « colis expédié »), dans l'ordre, pour découvrir ensemble comment le domaine fonctionne réellement. Comparaison du quotidien : reconstituer collectivement le déroulé d'un mariage en plaçant les étapes sur une frise, pour repérer qui fait quoi et quand.
 
 ### Au sortir de l'étape Conception et architecture, vous savez
 
@@ -262,23 +333,33 @@ Cette honnêteté est rare dans la littérature carrière. Elle est pourtant au 
 
 **Objectif** : porter la qualité jusqu'en production, livrer souvent, observer ce qui tourne.
 
-### Livres — livraison et exploitation
+> **Que veulent dire « production », « DevOps », « pipeline » ?**
+> La **production** (souvent « la prod ») est l'environnement réel où tourne le logiciel utilisé par les vraies personnes, par opposition aux environnements de test. Une erreur en production touche des utilisateurs réels. **DevOps** est la contraction de *Development* (développement) et *Operations* (exploitation, c'est-à-dire faire tourner et surveiller les serveurs) : un mouvement qui réunit ces deux métiers longtemps séparés, pour que ceux qui écrivent le code participent aussi à sa mise en service. Un **pipeline** (chaîne de traitement) est la suite automatisée d'étapes par lesquelles passe chaque modification : compilation, tests, puis déploiement. Comparaison du quotidien : une chaîne de montage où le code avance d'un poste à l'autre, chaque poste vérifiant quelque chose avant de laisser passer.
 
-1. **[The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win](https://www.amazon.fr/Phoenix-Project-DevOps-Helping-Business/dp/1942788290)** — Gene Kim, Kevin Behr, George Spafford
+### Livres : livraison et exploitation
+
+1. **[The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win](https://www.amazon.fr/Phoenix-Project-DevOps-Helping-Business/dp/1942788290)**, Gene Kim, Kevin Behr, George Spafford
    Roman pédagogique qui fait comprendre les *Three Ways* du DevOps par l'histoire d'une équipe en crise.
 
-2. **[Accelerate: The Science of Lean Software and DevOps](https://www.amazon.fr/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339)** — Nicole Forsgren, Jez Humble, Gene Kim
+2. **[Accelerate: The Science of Lean Software and DevOps](https://www.amazon.fr/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339)**, Nicole Forsgren, Jez Humble, Gene Kim
    Synthèse des recherches DORA : les quatre métriques (lead time, deployment frequency, MTTR, change failure rate) et leurs corrélations avec la performance d'entreprise.
 
-3. **[Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation](https://www.amazon.fr/Continuous-Delivery-Reliable-Deployment-Automation/dp/0321601912)** — Jez Humble, David Farley
+3. **[Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation](https://www.amazon.fr/Continuous-Delivery-Reliable-Deployment-Automation/dp/0321601912)**, Jez Humble, David Farley
    Mécanique du *deployment pipeline*, infrastructure as code, gestion des bases de données.
 
-4. **[Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/)** — Google (gratuit en ligne)
+4. **[Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/)**, Google (gratuit en ligne)
    Disponibilité comme produit, SLI / SLO / SLA, *error budgets*, postmortems sans blâme.
 
-### Pratique — livraison et exploitation
+   > **Que veulent dire « SRE », « SLI / SLO / SLA » et « postmortem sans blâme » ?**
+   > **SRE** (*Site Reliability Engineering*, ingénierie de la fiabilité des sites) est une discipline née chez Google qui traite la fiabilité d'un service comme une fonctionnalité à part entière, avec des mesures et des objectifs chiffrés. Les trois sigles suivants encadrent justement cette fiabilité. **SLI** (*Service Level Indicator*, indicateur de niveau de service) : une mesure concrète, par exemple le pourcentage de requêtes qui répondent en moins d'une seconde. **SLO** (*Service Level Objective*, objectif de niveau de service) : la cible qu'on se fixe sur cet indicateur, par exemple « 99,9 % des requêtes en moins d'une seconde ». **SLA** (*Service Level Agreement*, accord de niveau de service) : l'engagement contractuel envers le client, avec des pénalités s'il n'est pas tenu. Un **postmortem sans blâme** est le compte rendu écrit après un incident, qui cherche les causes du problème dans le système et non un coupable, pour que chacun ose dire la vérité et que l'équipe apprenne réellement.
+
+### Pratique : livraison et exploitation
 
 - **Construire son propre pipeline** sur un side-project : commit → tests → build → déploiement automatique.
+
+> **Que veulent dire « conteneur » et « orchestrateur » (Kubernetes) ?**
+> Un **conteneur** est un colis logiciel qui emballe une application avec tout ce dont elle a besoin pour tourner (bibliothèques, configuration), de sorte qu'elle fonctionne à l'identique sur n'importe quelle machine. Comparaison du quotidien : un conteneur maritime standardisé se charge sur n'importe quel bateau ou camion sans souci de son contenu. Un **orchestrateur** comme **Kubernetes** est le chef d'orchestre qui démarre, arrête, répartit et redémarre automatiquement des centaines de ces conteneurs sur un parc de serveurs, sans intervention humaine permanente.
+
 - **[Kubernetes Documentation](https://kubernetes.io/docs/home/)** : l'orchestrateur de fait pour les conteneurs.
 - **[The Twelve-Factor App](https://12factor.net/fr/)** : méthodologie pour des applications portables et déployables en continu.
 - **Exécuter un *game day*** : couper volontairement un service pour observer la résilience du reste.
@@ -299,6 +380,17 @@ Le TDD est plus qu'une technique de test : c'est une **boucle de feedback de con
 
 ### Le cycle red-green-refactor
 
+> **Que veut dire « red-green-refactor » ?**
+> C'est le rythme en trois temps du TDD, nommé d'après la couleur qu'affiche l'outil de test. **Red** (rouge) : on écrit d'abord un test, il échoue car le code n'existe pas encore, l'outil affiche rouge. **Green** (vert) : on écrit le minimum de code pour que le test passe, l'outil affiche vert. **Refactor** (refactoriser) : on nettoie le code sans changer ce qu'il fait, en gardant le vert. Comparaison du quotidien : poser d'abord la barre à franchir (rouge), sauter juste assez haut pour la passer (vert), puis soigner son geste (refactor).
+
+```mermaid
+flowchart LR
+    R["Red<br/>ecrire un test qui echoue"]
+    G["Green<br/>code minimal pour le faire passer"]
+    F["Refactor<br/>nettoyer sans changer le comportement"]
+    R --> G --> F --> R
+```
+
 1. **Red** : écrire un test qui échoue. Si le test passe du premier coup, c'est qu'il ne testait pas grand-chose.
 2. **Green** : écrire le code minimum pour faire passer le test. *Fake it till you make it.* On a le droit d'écrire le code le plus moche possible à cette étape.
 3. **Refactor** : nettoyer le code et les tests, **sans ajouter de comportement**. Les tests verts sont le filet.
@@ -314,6 +406,9 @@ Les deux écoles sont valides. Les connaître permet de faire un choix conscient
 
 **École classique (dite « Chicago », ou « state-based »).** On part d'un test de bout en bout, on construit les objets réels au fil du test, on vérifie l'état après l'action. Le test connaît peu la structure interne. Refactoriser la structure ne casse pas les tests tant que le comportement public est stable. Référence : Kent Beck, *Test Driven Development: By Example*. Convient aux algorithmes, aux objets-valeurs, aux modèles de domaine purs.
 
+> **Que veulent dire « mock », « objet-valeur », « état » ?**
+> Un **mock** (objet simulé) est une doublure de test programmée pour vérifier qu'on l'a bien appelée comme prévu (par exemple : « le service d'envoi d'e-mail a-t-il bien été appelé une fois ? »). Un **objet-valeur** (*value object*) est un petit objet défini uniquement par ses données, sans identité propre, par exemple une somme d'argent ou une adresse e-mail : deux objets identiques sont interchangeables, comme deux pièces de un euro. L'**état** (*state*) est l'ensemble des valeurs que contient un objet à un instant donné ; un test « basé sur l'état » vérifie ces valeurs après l'action, tandis qu'un test « basé sur l'interaction » vérifie quels appels ont eu lieu.
+
 **École londonienne (dite « mockist », ou « interaction-based »).** On part de l'extérieur, on dirige la conception par les collaborations entre objets, on remplace les collaborateurs par des *mocks* qui vérifient les interactions. Référence : Steve Freeman et Nat Pryce, *Growing Object-Oriented Software, Guided by Tests*. Convient aux objets de service, aux orchestrations, aux frontières (HTTP, queues, base de données).
 
 **Comment choisir ?** Pour un cœur de domaine riche et stable, préférer le style Chicago : les tests survivent aux refactos. Pour un service applicatif qui orchestre des collaborateurs, le style Londres documente mieux les contrats. La plupart des codebases mûres mélangent les deux, sans complexe.
@@ -324,7 +419,20 @@ Si écrire un test est douloureux, le test vous dit quelque chose : trop de dép
 
 ### Pyramide ou trophée
 
-La pyramide classique de Mike Cohn (beaucoup d'unitaires, quelques intégration, peu de bout-en-bout) reste un bon point de départ. Pour les applications web modernes, Kent C. Dodds propose le *testing trophy* (statique, unitaire, intégration, E2E) : la couche d'intégration y prend plus d'importance. Le bon dosage dépend du coût d'exécution et de la fiabilité des tests dans votre contexte. Le critère qui compte : un test qui échoue parle vite, et il parle juste.
+> **Que veulent dire « test unitaire », « test d'intégration », « E2E » ?**
+> Un **test unitaire** vérifie un tout petit morceau de code isolé (une fonction, une classe). Il est rapide et précis. Un **test d'intégration** vérifie que plusieurs morceaux fonctionnent ensemble (par exemple le code et la vraie base de données). Un test **E2E** (*end to end*, de bout en bout) imite un utilisateur réel qui traverse toute l'application, du clic jusqu'au résultat affiché. Comparaison du quotidien : pour une voiture, le test unitaire vérifie une bougie, l'intégration vérifie que le moteur tourne, le E2E vérifie qu'on peut faire le tour du pâté de maisons.
+
+La pyramide classique de Mike Cohn (beaucoup d'unitaires, quelques intégration, peu de bout-en-bout) reste un bon point de départ : les tests rapides et précis sont nombreux, les tests lents et fragiles sont rares.
+
+```mermaid
+flowchart TD
+    E["Tests E2E (peu)<br/>lents, fragiles, realistes"]
+    I["Tests d'integration (quelques-uns)<br/>plusieurs pieces ensemble"]
+    U["Tests unitaires (beaucoup)<br/>rapides, precis, isoles"]
+    E --> I --> U
+```
+
+Pour les applications web modernes, Kent C. Dodds propose le *testing trophy* (statique, unitaire, intégration, E2E) : la couche d'intégration y prend plus d'importance, parce qu'elle attrape les bugs là où les morceaux se rencontrent. Le bon dosage dépend du coût d'exécution et de la fiabilité des tests dans votre contexte. Le critère qui compte : un test qui échoue parle vite, et il parle juste.
 
 ## Le côté sombre du TDD : sur-tester et abîmer la conception
 
@@ -333,6 +441,9 @@ Le TDD a aussi ses dérives. Les ignorer, c'est s'exposer à les vivre sans les 
 ### Le débat « TDD is dead » (2014)
 
 En avril 2014, **David Heinemeier Hansson** (créateur de Ruby on Rails) publie *TDD is dead. Long live testing.* Il y dénonce une dérive : à force de chercher la testabilité, on multiplie les indirections, on extrait des classes uniquement pour pouvoir les *mocker*, on fragmente le domaine en services anémiques. Il forge l'expression **« TDD-induced design damage »** : des dégâts de conception causés par le souci de tester.
+
+> **Que veulent dire « indirection », « service anémique », « testabilité » ?**
+> Une **indirection** est une couche intermédiaire ajoutée entre deux parties du code : au lieu d'appeler directement B, A passe par un intermédiaire. Un peu d'indirection assouplit le code ; trop le rend labyrinthique, car il faut sauter de fichier en fichier pour suivre une simple action. Un **service anémique** est un objet vidé de sa logique métier, réduit à transporter des données d'un endroit à l'autre, ce qui éparpille les vraies règles ailleurs. La **testabilité** est la facilité avec laquelle on peut écrire des tests sur un code : un code difficile à tester révèle souvent un défaut de conception (trop de dépendances enchevêtrées).
 
 La même année, **Kent Beck**, **Martin Fowler** et **DHH** tiennent une série de conversations en visio (*Is TDD Dead?*, six épisodes, 2014). Beck nuance : le TDD reste un excellent outil, mais ce n'est ni une obligation morale ni la seule manière d'écrire du bon code. Fowler ajoute que **la testabilité est un indicateur de couplage**, pas une fin en soi. La conclusion implicite des trois : appliquez le TDD avec discernement, pas par dévotion.
 
@@ -348,7 +459,7 @@ Une suite de tests **mal pensée** finit par coûter plus cher qu'elle ne rappor
 - **Tests fragiles** qui cassent à chaque renommage interne, même quand le comportement est inchangé.
 - **Mocks qui spécifient l'implémentation** au lieu de vérifier le comportement : le test devient un miroir du code, pas un garde-fou.
 - **Couverture obsessive** : on teste les *getters*, les *setters*, les concaténations triviales, et la suite met dix minutes pour rien.
-- **Tests obscurs** : le lecteur ne comprend pas quel comportement est vérifié, ni pourquoi il est censé tenir. *Mystery guest*, *eager test*, *assertion roulette* — voir le catalogue de Meszaros.
+- **Tests obscurs** : le lecteur ne comprend pas quel comportement est vérifié, ni pourquoi il est censé tenir. *Mystery guest*, *eager test*, *assertion roulette* : voir le catalogue de Meszaros.
 - **Tests dupliqués** : la même règle métier vérifiée à dix endroits, par cinq mécanismes différents. Toute évolution coûte dix corrections de tests.
 
 ### Heuristiques pour ne pas sur-tester
@@ -400,7 +511,10 @@ Le refactoring le plus rentable au monde. Un bon nom économise des heures de re
 
 ### Replace Conditional with Polymorphism (remplacer un conditionnel par du polymorphisme)
 
-Quand un `if`/`switch` se ramifie sur un type ou un état, on peut souvent le remplacer par des classes filles qui chacune connaissent leur cas.
+> **Que veut dire « polymorphisme » ?**
+> Le polymorphisme (du grec : « plusieurs formes ») est la capacité de plusieurs objets à répondre au même ordre, chacun à sa manière. On appelle `cout_envoi()` sans savoir s'il s'agit d'un colis standard, express ou international : chaque type sait calculer son propre coût. Comparaison du quotidien : on dit « avance » à un cheval, à une voiture et à un bateau ; chacun comprend et exécute à sa façon, sans qu'on ait à préciser comment.
+
+Quand un `if`/`switch` se ramifie sur un type ou un état, on peut souvent le remplacer par des classes filles qui chacune connaissent leur cas. L'avantage : ajouter un nouveau cas n'oblige plus à rouvrir et risquer de casser la fonction commune.
 
 Avant :
 ```python
@@ -464,11 +578,14 @@ L'inverse d'extract. Si une méthode n'apporte rien de plus que son contenu, on 
 
 ### Move Method / Move Field
 
-Quand une méthode parle plus à une autre classe qu'à la sienne, on la déplace. Indice : elle utilise majoritairement les champs d'un autre objet (*feature envy*).
+Quand une méthode parle plus à une autre classe qu'à la sienne, on la déplace. Indice : elle utilise majoritairement les champs d'un autre objet (*feature envy*, « envie des fonctionnalités d'autrui » : une méthode qui s'intéresse plus aux données d'une autre classe qu'aux siennes).
 
 ### Encapsulate Field / Replace Data Value with Object
 
-Une donnée nue (`string adresse_email`) finit par être validée à plusieurs endroits. Encapsuler dans un *value object* (`AdresseEmail`) concentre les invariants et élimine les validations dupliquées.
+> **Que veulent dire « encapsuler » et « invariant » ?**
+> **Encapsuler** signifie enfermer une donnée à l'intérieur d'un objet et contrôler les accès, plutôt que la laisser nue et manipulable de partout. Comparaison du quotidien : un distributeur de billets ne vous laisse pas plonger la main dans le coffre ; il impose un guichet avec des règles. Un **invariant** est une règle qui doit rester vraie en permanence pour qu'un objet soit valide, par exemple « une adresse e-mail contient toujours un @ » ou « la fin d'un créneau est toujours après son début ».
+
+Une donnée nue (`string adresse_email`) finit par être validée à plusieurs endroits. Encapsuler dans un *value object* (`AdresseEmail`) concentre les invariants et élimine les validations dupliquées : la règle de validité vit en un seul endroit, impossible à contourner.
 
 Le réflexe à acquérir : **toujours refactorer sous filet de tests**, par micro-pas, en s'arrêtant régulièrement pour tout exécuter. Si l'IDE propose le refactoring (Rename, Extract Method, Move), s'en servir : il évite les fautes de frappe qui passent les tests.
 
@@ -500,6 +617,9 @@ Un *kata* est un exercice court, à refaire. L'enjeu n'est pas la solution mais 
 
 - **Trip Service Kata** de Sandro Mancuso : refactorer un code legacy avec des dépendances statiques difficiles à isoler. Pratique des *seams* à la Feathers.
 - **Diamond Kata** de Seb Rose : produire un diamant à partir d'une lettre. Court, mais redoutable pour comparer TDD bottom-up et property-based testing.
+
+> **Que veut dire « property-based testing » ?**
+> Le *property-based testing* (test par propriétés) ne donne pas un exemple précis attendu ; il énonce une règle générale qui doit toujours tenir, puis l'outil génère automatiquement des centaines d'entrées au hasard pour tenter de la mettre en défaut. Comparaison du quotidien : au lieu de vérifier « 3 + 5 = 8 », on affirme « additionner deux nombres positifs donne toujours un résultat plus grand que chacun d'eux » et la machine cherche un contre-exemple.
 - **Lift Kata** : modélisation d'un ascenseur multi-étages avec plusieurs cabines. Conception, états, événements.
 
 **Bonnes adresses pour des katas.** [Coding Dojo](https://codingdojo.org/), [Kata-Log](https://kata-log.rocks/), [Kata Containers (Emily Bache)](https://github.com/emilybache), [GitHub coding-katas](https://github.com/topics/coding-katas).
@@ -516,7 +636,7 @@ Le kata exhibition se reconnaît à plusieurs symptômes :
 
 - On choisit un kata qu'on a déjà fait dix fois, on déroule la solution mémorisée, on récolte des « *clean* » de la salle.
 - On termine le kata sans avoir échoué une seule fois. Pas de *red* surprenant, pas de *refactor* douloureux, pas d'apprentissage.
-- L'environnement est idéal : un greenfield, un énoncé de cinq lignes, des collaborateurs concentrés. Rien de comparable à la vraie journée.
+- L'environnement est idéal : un *greenfield* (projet neuf, parti de zéro, sans contrainte d'existant, par opposition au *brownfield*, un terrain déjà bâti), un énoncé de cinq lignes, des collaborateurs concentrés. Rien de comparable à la vraie journée.
 - Personne ne reprend les acquis du kata dans le code de production le lendemain.
 
 ### La pratique de production : ce qui compte vraiment
@@ -550,6 +670,9 @@ Deux personnes, **une seule machine active**.
 - Le **driver** tient le clavier. Il traduit l'intention en code.
 - Le **navigator** regarde la carte : il pense au prochain test, repère les coquilles, garde l'objectif en vue.
 - **On change de rôle régulièrement**, toutes les 10 à 25 minutes. Sans alternance, ce n'est plus du pair, c'est un public.
+
+> **Que veut dire « bus factor » ?**
+> Le *bus factor* (facteur d'autobus) est le nombre de personnes qui peuvent disparaître de l'équipe (au sens imagé : se faire renverser par un bus) avant que le projet ne soit bloqué faute de savoir. Un *bus factor* de 1 est dangereux : une seule personne connaît un morceau critique. Programmer à deux fait monter ce nombre, car la connaissance est partagée.
 
 **Bénéfices.**
 - Diffusion de la connaissance dans l'équipe : pas de silo, le bus factor monte.
@@ -592,6 +715,9 @@ Le pair programming est **merveilleux 30 % du temps, neutre 40 %, contre-product
 
 - **Sujets à forte incertitude technique** : un nouveau domaine, une dette mal connue, un bug profond. Deux paires d'yeux convergent plus vite vers la cause.
 - **Décisions de conception structurantes** : choisir un découpage, nommer un agrégat, poser une frontière. Le dialogue oblige à expliciter, et l'explicite est plus solide que l'implicite.
+
+> **Que veut dire « agrégat » et « bounded context » (contexte délimité) ?**
+> Un **agrégat** (terme du DDD) est un groupe d'objets qu'on traite comme un seul bloc cohérent, avec un objet « chef » par lequel passent toutes les modifications, afin de garantir les règles internes. Comparaison du quotidien : une commande et ses lignes forment un agrégat ; on n'ajoute pas une ligne directement, on passe par la commande, qui vérifie le total. Un **bounded context** (contexte délimité) est une frontière à l'intérieur de laquelle un mot a un sens précis et stable. Le mot « client » ne signifie pas la même chose pour la facturation et pour le support ; chaque contexte a son propre modèle, et une frontière nette évite les confusions.
 - **Onboarding** : un nouvel arrivant absorbe en deux jours de pair ce qu'il mettrait deux semaines à comprendre seul.
 - **Transmission de pratique** : faire pratiquer le TDD à quelqu'un qui n'en a jamais fait passe par le geste partagé, pas par la doc.
 - **Code à fort impact** (sécurité, paiement, données sensibles) : le pair sert de *quatre yeux* en temps réel et fait gagner un *round* de revue.
@@ -625,6 +751,9 @@ Une revue de PR (ou MR) est **un acte de soin** envers le code et son auteur. El
 - Une description : pourquoi, quoi, comment tester, captures s'il faut.
 - Un *diff* qui tient à l'écran. Une PR de 800 lignes ne se relit pas, elle se survole.
 - Des commits propres, ou un *squash* à la fusion.
+
+> **Que veulent dire « diff », « commit », « squash », « nit », « LGTM » ?**
+> Un **diff** (différence) est l'affichage des lignes ajoutées et supprimées par une modification : le relecteur ne lit que ce qui change, pas tout le projet. Un **commit** est une modification enregistrée dans l'historique Git, avec un message qui en explique l'intention. **Squash** (écraser) signifie fusionner plusieurs commits en un seul, plus propre, au moment d'intégrer la branche. Un **nit** (de *nitpick*, pinaillage) est une remarque mineure, esthétique, qui ne bloque pas. **LGTM** (*Looks Good To Me*, « ça me va ») est l'abréviation par laquelle un relecteur approuve une PR.
 - Des tests verts en CI avant qu'on commence à lire.
 
 ### Ce qu'on attend d'un bon relecteur
@@ -642,6 +771,9 @@ Une grille mémo simple, à parcourir mentalement sur chaque PR.
 - **A** comme **Architecture** : la PR respecte-t-elle les frontières et les couches ? Pas de fuite d'infrastructure dans le domaine ?
 - **A** comme **API** : les contrats publics (signature, route HTTP, événement) restent-ils stables, documentés, rétro-compatibles ?
 - **B** comme **Bugs** : cas limites, valeurs nulles, dates, fuseaux horaires, concurrence, idempotence.
+
+> **Que veulent dire « cas limite », « concurrence », « idempotence » ?**
+> Un **cas limite** (*edge case*) est une valeur aux bords du raisonnable qui fait souvent planter : une liste vide, le nombre zéro, la date du 29 février, un texte très long. La **concurrence** désigne plusieurs traitements qui s'exécutent en même temps et risquent de se marcher dessus (deux personnes réservant le dernier siège à la même seconde). L'**idempotence** est la propriété d'une opération qu'on peut répéter sans dommage : appuyer deux fois sur le bouton « payer » ne doit débiter qu'une fois. Comparaison du quotidien : le bouton d'appel d'ascenseur est idempotent, le presser dix fois ne change rien.
 - **B** comme **Behaviour** : le test vérifie-t-il vraiment le comportement attendu, ou juste l'implémentation ?
 - **C** comme **Clarity** : nommage, structure, lisibilité du diff. Un développeur arrivant demain comprendrait-il ?
 - **C** comme **Coverage** : zones non testées, tests fragiles, *test smells*.
@@ -705,6 +837,9 @@ Le craftsman tient une ligne moyenne, étrangère à la fois au dogme du plannin
 - **Mesurer le débit réel** plutôt que la conformité à l'estimation. Un débit régulier vaut mieux qu'une estimation parfaite.
 - **Avoir le courage du « je ne sais pas »**, suivi de « voici ce que je propose pour le savoir : un *spike* de deux jours, et on rediscute ». C'est rarement bien reçu au premier abord, c'est toujours payant à terme.
 
+> **Que veut dire « spike » et « backlog » ?**
+> Un **spike** (pointe) est une courte exploration bornée dans le temps (un ou deux jours) dont le but n'est pas de livrer une fonctionnalité mais de lever une incertitude : essayer une piste, mesurer une difficulté, puis décider. Comparaison du quotidien : un sondage de terrain avant de construire. Un **backlog** (réserve de travail) est la liste ordonnée de tout ce qui reste à faire sur un produit, du plus prioritaire au moins urgent ; l'équipe y pioche au fur et à mesure.
+
 Lectures :
 
 - Mike Cohn, *Agile Estimating and Planning* (2005).
@@ -732,6 +867,9 @@ C'est désagréable parce qu'on enchâsse même des bugs. C'est précieux parce 
 
 Concept central de Feathers : une *seam* est un endroit où l'on peut **changer de comportement sans modifier le code** (par injection, héritage, lien dynamique, etc.). Identifier les seams permet d'introduire des doublures de test sans tout réécrire.
 
+> **Que veulent dire « injection de dépendance » et « héritage » ?**
+> L'**injection de dépendance** consiste à fournir à un objet les outils dont il a besoin depuis l'extérieur, au lieu qu'il les fabrique lui-même. Comparaison du quotidien : on tend une perceuse au bricoleur (injection) plutôt que de le forcer à construire sa propre perceuse. En test, on peut alors lui « injecter » une fausse perceuse silencieuse. L'**héritage** est un mécanisme orienté objet où une classe « fille » récupère et spécialise le comportement d'une classe « mère » ; par exemple `Chat` hérite de `Animal` et ajoute « miauler ».
+
 ### Sprout method / Sprout class
 
 Plutôt que d'éditer une grosse fonction non testée, **on lui greffe** une nouvelle méthode (ou classe) **bien testée**, et la fonction d'origine appelle cette greffe. Le code neuf est propre, le code ancien reste isolé. Avec le temps, la greffe grossit, l'ancien rétrécit.
@@ -742,7 +880,18 @@ On *enveloppe* un appel existant : la méthode publique change de nom, on en cr�
 
 ### Strangler Fig (figuier étrangleur)
 
-Patron popularisé par Martin Fowler en 2004, sur la métaphore du figuier qui pousse autour de son hôte et finit par le remplacer. On ne réécrit pas le système legacy ; on **construit le nouveau autour**, on bascule trafic et fonctionnalités progressivement, jusqu'à pouvoir éteindre l'ancien. Convient aux migrations lourdes, sans *big bang*.
+Patron popularisé par Martin Fowler en 2004, sur la métaphore du figuier qui pousse autour de son hôte et finit par le remplacer. On ne réécrit pas le système legacy ; on **construit le nouveau autour**, on bascule trafic et fonctionnalités progressivement, jusqu'à pouvoir éteindre l'ancien. Convient aux migrations lourdes, sans *big bang* (la réécriture totale d'un coup, qu'on bascule en une seule fois, approche risquée car tout casse en même temps).
+
+```mermaid
+flowchart LR
+    U["Utilisateurs"]
+    R["Aiguilleur<br/>(redirige le trafic)"]
+    OLD["Systeme ancien<br/>(legacy)"]
+    NEW["Systeme neuf<br/>(grossit peu a peu)"]
+    U --> R
+    R -- "fonctions pas encore migrees" --> OLD
+    R -- "fonctions deja migrees" --> NEW
+```
 
 ### Anti-corruption layer (couche anti-corruption)
 
@@ -802,6 +951,19 @@ Le craftsmanship culmine, en environnement professionnel, dans la **livraison co
 - Si vous **codez avec des frontières claires** (couches, *bounded contexts*, ports/adapters), vous pouvez déployer indépendamment ce qui est indépendant.
 - Si vous **maîtrisez les feature flags**, vous pouvez fusionner souvent sans exposer ce qui n'est pas fini.
 
+> **Que veulent dire « port / adaptateur » et « feature flag » ?**
+> Le couple **port / adaptateur** (cœur de l'architecture dite hexagonale) sépare le cœur métier du monde extérieur. Un **port** est une prise standardisée définie par le métier (« j'ai besoin de sauvegarder une commande »), sans dire comment. Un **adaptateur** est la fiche qui se branche sur cette prise et réalise le « comment » concret (sauver dans une base PostgreSQL, dans un fichier, ailleurs). Comparaison du quotidien : une prise électrique murale est un port ; le chargeur qu'on y branche est un adaptateur, interchangeable sans toucher au mur. On peut ainsi remplacer la base de données sans réécrire le métier. Un **feature flag** (drapeau de fonctionnalité) est un interrupteur dans le code qui active ou désactive une fonctionnalité sans redéployer : on peut livrer du code éteint, puis l'allumer plus tard, pour quelques utilisateurs d'abord.
+
+```mermaid
+flowchart LR
+    UI["Adaptateur entrant<br/>(interface web, API)"]
+    PORTIN["Port entrant"]
+    CORE["Coeur metier<br/>(domaine pur)"]
+    PORTOUT["Port sortant"]
+    DB["Adaptateur sortant<br/>(base de donnees, e-mail)"]
+    UI --> PORTIN --> CORE --> PORTOUT --> DB
+```
+
 L'inverse est vrai : une équipe qui prétend faire du craft mais qui livre une fois par mois en grosse fournée a, quelque part, un mensonge qu'elle se raconte.
 
 ### Les quatre métriques DORA
@@ -820,6 +982,21 @@ Les organisations qualifiées d'*élite* livrent **plusieurs fois par jour**, av
 L'idée centrale de la CD, héritée du *lean* et formalisée par Humble et Farley, est que **plus le lot est petit, plus le système est sain** : moins de risque par déploiement, retour utilisateur plus rapide, capacité à corriger immédiatement. Le craftsman lutte contre tout ce qui grossit le lot : grosses PR, branches longues, fenêtres de déploiement rares, *release notes* à rallonge.
 
 ### Pratiques structurantes
+
+> **Que veulent dire « branche », « trunk-based », « smoke test », « canary », « rollback » ?**
+> Une **branche** Git est une copie de travail parallèle où l'on développe une fonctionnalité sans perturber le code principal, avant de la fusionner. Le **trunk-based development** (développement sur le tronc) consiste à travailler sur des branches très courtes et à fusionner dans la branche principale plusieurs fois par jour, pour éviter les écarts qui s'accumulent. Un **smoke test** (test de fumée) est une vérification rapide après déploiement que l'essentiel fonctionne (l'expression vient de l'électronique : on branche, et si ça fume, on arrête). Le **canary** (canari) est une mise en service progressive sur une petite fraction d'utilisateurs avant de généraliser, du nom du canari descendu dans les mines pour détecter le danger en premier. Le **rollback** (retour arrière) consiste à revenir à la version précédente quand la nouvelle pose problème.
+
+```mermaid
+flowchart LR
+    COMMIT["Commit"]
+    BUILD["Build"]
+    UT["Tests unitaires"]
+    IT["Tests d'integration"]
+    DEPLOY["Deploiement automatique"]
+    SMOKE["Smoke tests et surveillance"]
+    COMMIT --> BUILD --> UT --> IT --> DEPLOY --> SMOKE
+    SMOKE -- "anomalie detectee" --> ROLLBACK["Rollback"]
+```
 
 - **Trunk-based development** ou *short-lived feature branches* : la branche principale est intégrable à tout moment.
 - **Pipeline de déploiement** outillé : commit, build, tests unitaires, tests d'intégration, déploiement automatique en environnements successifs.
@@ -902,11 +1079,11 @@ Compatible avec le craft. Le bon manager technique reste légitime sur le code p
 
 ### Lectures pour penser sa carrière
 
-- *Software Craftsmanship* — Sandro Mancuso (manifeste vivant).
-- *The Pragmatic Programmer* — Hunt & Thomas (toujours).
-- *A Philosophy of Software Design* — John Ousterhout (synthèse moderne).
-- *Staff Engineer* — Will Larson.
-- *The Manager's Path* — Camille Fournier (pour comprendre l'autre voie, même si on ne la prend pas).
+- *Software Craftsmanship*, Sandro Mancuso (manifeste vivant).
+- *The Pragmatic Programmer*, Hunt & Thomas (toujours).
+- *A Philosophy of Software Design*, John Ousterhout (synthèse moderne).
+- *Staff Engineer*, Will Larson.
+- *The Manager's Path*, Camille Fournier (pour comprendre l'autre voie, même si on ne la prend pas).
 
 ## Burnout et perfectionnisme du craftsman
 
@@ -1003,7 +1180,7 @@ Les dates exactes varient d'une année sur l'autre ; les périodes citées sont 
 - [Kent Beck (Substack)](https://tidyfirst.substack.com/) : essais courts sur la conception et le *Tidy First*.
 - [Ron Jeffries](https://ronjeffries.com/) : un des signataires originaux du Manifeste Agile, écrit chaque semaine, exemples de TDD au long cours.
 - [Martin Fowler](https://martinfowler.com/) : la bibliothèque de référence sur le refactoring, les patterns, les ADR.
-- [Dave Farley — Continuous Delivery (YouTube)](https://www.youtube.com/@ContinuousDelivery) : co-auteur de *Continuous Delivery*, contenu hebdomadaire.
+- [Dave Farley, Continuous Delivery (YouTube)](https://www.youtube.com/@ContinuousDelivery) : co-auteur de *Continuous Delivery*, contenu hebdomadaire.
 - [Emily Bache (YouTube et katas)](https://github.com/emilybache) : enseignante TDD, mainteneuse de plusieurs katas de référence.
 
 ## Anti-patterns du faux craft
@@ -1062,10 +1239,10 @@ Les livres et les conférences donnent le matériel ; ce sont les habitudes qui 
 
 - [Manifesto for Software Craftsmanship (2009)](https://manifesto.softwarecraftsmanship.org/)
 - [Manifesto for Agile Software Development (2001)](https://agilemanifesto.org/iso/fr/manifesto.html)
-- [Principes SOLID — Robert C. Martin](https://en.wikipedia.org/wiki/SOLID)
-- [Refactoring Guru — Design patterns et refactoring](https://refactoring.guru/)
+- [Principes SOLID, Robert C. Martin](https://en.wikipedia.org/wiki/SOLID)
+- [Refactoring Guru : design patterns et refactoring](https://refactoring.guru/)
 - [The Twelve-Factor App](https://12factor.net/) : applications modernes
-- [DORA — State of DevOps reports](https://dora.dev/research/)
+- [DORA : State of DevOps reports](https://dora.dev/research/)
 - [Kata-Log](https://kata-log.rocks/) : annuaire de katas avec tags par compétence
 - [martinfowler.com / refactoring catalog](https://refactoring.com/catalog/) : référence en ligne du catalogue de Fowler
 - [c2.com (le tout premier wiki de Ward Cunningham)](https://wiki.c2.com/) : sources historiques sur la dette technique, l'extreme programming, les patterns
